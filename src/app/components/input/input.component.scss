@@ -1,0 +1,8 @@
+:host(.app-input) {
+    display: flex;
+    width: 100%;
+
+    ::ng-deep input {
+        width: 100%;
+    }
+}

@@ -1,0 +1,14 @@
+:host {
+    .chat-container {
+        &__main {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        &__footer {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+        }
+    }
+}
