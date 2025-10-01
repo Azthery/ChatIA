@@ -4,12 +4,15 @@
     <app-chat-bubble *ngFor="let message of messages" [sender]="message.sender">
       {{ message.content }}
     </app-chat-bubble>
+     <app-chat-bubble sender="bot" *ngIf="loading">
+      Loading...
+    </app-chat-bubble>
 
   </section>
   <section class="chat-container__footer" chat-footer>
     <app-input>
-      <input #inputElement type="text" (keyup.enter)="sendMessage()" placeholder="Escribe tu mensaje..." />
-      <button app-button (click)="sendMessage()">Send</button>
+      <input #inputElement type="text" (input)="onInput($event)" (keyup.enter)="sendMessage()" placeholder="Escribe tu mensaje..." />
+      <button app-button (click)="sendMessage()" [disabled]="disabledButtonSend">Send</button>
       <!-- <button app-button (click)="sendBotMessage('Soy un bot xd')">Bot</button> -->
     </app-input>
   </section>
