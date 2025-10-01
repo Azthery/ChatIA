@@ -37,4 +37,21 @@ export class OllamaService {
     return throwError(() => new Error('Error al comunicarse con Ollama'));
   }
 
+  public setApiKey(apiKey: string): void {
+    const host = 11434;
+    this.API_URL = `http://${apiKey}:${host}/api`;
+  }
+
+  public formatResponseAPI(text: string): { think: string; responseText: string } {
+    const startTag = "<think>";
+    const endTag = "</think>";
+    const startIndex = text.indexOf(startTag);
+    const endIndex = text.indexOf(endTag);
+
+    const think = text.substring(startIndex + startTag.length, endIndex);
+    const responseText = text.substring(endIndex + endTag.length);
+
+    return {  think, responseText };
+  }
+
 }

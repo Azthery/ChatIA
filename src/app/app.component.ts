@@ -65,9 +65,10 @@ export class AppComponent {
     this.ollamaService.postMessage(message).subscribe({
       next: (response: any) => {
         // Manejar la respuesta exitosa de la API
-        console.log('Respuesta de Ollama:', response.response);
+        console.log('Respuesta de Ollama:', this.ollamaService.formatResponseAPI(response.response));
         // Aquí puedes agregar la respuesta al array de mensajes para mostrarla en el chat
-        this.addMessage(response.response, 'bot');
+        const data = this.ollamaService.formatResponseAPI(response.response)
+        this.addMessage(data.responseText, 'bot');
       },
       error: (error: any) => {
         // Manejar el error
@@ -78,6 +79,12 @@ export class AppComponent {
         this.loading = false;
       }
     });
+  }
+
+  public setApiKey(event: Event): void {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.ollamaService.setApiKey(inputValue);
+    console.log('API Key set to:', this.ollamaService.API_URL);
   }
 
 }

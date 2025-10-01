@@ -1,5 +1,12 @@
 :host {
     .chat-container {
+        &__header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            
+        }
         &__main {
             display: flex;
             flex-direction: column;

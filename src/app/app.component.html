@@ -1,4 +1,13 @@
 <app-chat-container>
+  <section chat-header class="chat-container__header">
+    <div>IA Chat</div>
+    <div class="chat-container__header__input-api">
+
+      <app-input>
+        <input type="text" placeholder="Ingresa tu API" (keyup.enter)="setApiKey($event)" />
+      </app-input>
+    </div>
+  </section>
   <section chat-main class="chat-container__main">
 
     <app-chat-bubble *ngFor="let message of messages" [sender]="message.sender">
