@@ -38,8 +38,13 @@ export class OllamaService {
   }
 
   public setApiKey(apiKey: string): void {
-    const host = 11434;
-    this.API_URL = `http://${apiKey}:${host}/api`;
+    if(apiKey) {
+      this.API_URL = `http://${apiKey}:11434/api`;
+    } else {
+      this.API_URL = `http://localhost:11434/api`;
+    }
+    // this.API_URL = `http://localhost:11434/api`;
+
   }
 
   public formatResponseAPI(text: string): { think: string; responseText: string } {

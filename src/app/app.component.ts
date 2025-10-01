@@ -22,11 +22,12 @@ export class AppComponent {
   public messages: Message[] = [];
   public disabledButtonSend: boolean = true;
   public loading: boolean = false;
+  public error: boolean = false;
   title = 'ChatIA';
   
   @ViewChild('inputElement') inputElement: any;
 
-  constructor(private ollamaService: OllamaService) {}
+  constructor(public ollamaService: OllamaService) {}
 
   public addMessage(content: string, sender: 'user' | 'bot'): void {
     const newMessage: Message = {
@@ -62,6 +63,7 @@ export class AppComponent {
 
   private postMessage(message: string): void {
     this.loading = true;
+    this.error = false;
     this.ollamaService.postMessage(message).subscribe({
       next: (response: any) => {
         // Manejar la respuesta exitosa de la API
@@ -73,6 +75,8 @@ export class AppComponent {
       error: (error: any) => {
         // Manejar el error
         console.error('Error al enviar el mensaje:', error);
+        this.error = true;
+        this.loading = false;
         // Mostrar un mensaje de error al usuario
       },
       complete: () => {

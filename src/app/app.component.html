@@ -4,9 +4,13 @@
     <div class="chat-container__header__input-api">
 
       <app-input>
-        <input type="text" placeholder="Ingresa tu API" (keyup.enter)="setApiKey($event)" />
+        <input type="text" placeholder="Ingresa tu API" (input)="setApiKey($event)" />
       </app-input>
     </div>
+
+    <p class="chat-container__header__info">
+      API: {{ ollamaService.API_URL }}
+    </p>
   </section>
   <section chat-main class="chat-container__main">
 
@@ -15,6 +19,9 @@
     </app-chat-bubble>
      <app-chat-bubble sender="bot" *ngIf="loading">
       Loading...
+    </app-chat-bubble>
+    <app-chat-bubble sender="bot" *ngIf="error">
+      Ups, ha ocurrido un error.
     </app-chat-bubble>
 
   </section>

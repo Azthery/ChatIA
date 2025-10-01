@@ -8,3 +8,9 @@
     background-color: #101622;
     color: white;
 }
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
