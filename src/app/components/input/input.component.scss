@@ -1,8 +1,23 @@
 :host(.app-input) {
     display: flex;
     width: 100%;
-
-    ::ng-deep input {
-        width: 100%;
+    border-radius: 0.3rem;
+    border: 1px solid #e5e7eb;
+    
+    ::ng-deep {
+        input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-weight: 400;
+            &:focus, &:focus-visible {
+                border-color: #30cc92;
+                color: white
+            }
+            &::placeholder {
+                color: rgb(122, 122, 122);
+            }
+        }
     }
 }

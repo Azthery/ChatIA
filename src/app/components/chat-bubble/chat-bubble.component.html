@@ -1,6 +1,9 @@
 <div class="chat-bubble__sender">
-    {{ sender }}
+    {{ sender == 'user' ? 'Tú' : '' }}
 </div>
-<p>
+<div class="chat-bubble__message">
+  <div class="chat-bubble__message__header">{{ sender[0].toUpperCase() + sender.slice(1) }}</div>
+  <div class="chat-bubble__message__content">
     <ng-content></ng-content>
-</p>
+  </div>
+</div>

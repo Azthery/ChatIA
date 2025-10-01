@@ -3,6 +3,7 @@ import { InputComponent } from './components/input/input.component';
 import { ChatContainerComponent } from './components/chat-container/chat-container.component';
 import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.component';
 import { CommonModule, NgForOf } from '@angular/common';
+import { ButtonComponent } from './components/button/button.component';
 
 interface Message {
   id: number;
@@ -12,7 +13,7 @@ interface Message {
 
 @Component({
   selector: 'app-root',
-  imports: [ CommonModule ,InputComponent, ChatContainerComponent, ChatBubbleComponent],
+  imports: [ CommonModule ,InputComponent, ChatContainerComponent, ChatBubbleComponent, ButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -37,6 +38,10 @@ export class AppComponent {
     const inputValue = this.inputElement.nativeElement.value;
     this.addMessage(inputValue, 'user');
     this.clearInput();
+  }
+
+  public sendBotMessage(content: string): void {
+    this.addMessage(content, 'bot');
   }
 
   public clearInput(): void {

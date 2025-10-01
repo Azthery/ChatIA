@@ -8,8 +8,9 @@
   </section>
   <section class="chat-container__footer" chat-footer>
     <app-input>
-      <input #inputElement type="text" (keyup.enter)="sendMessage()">
+      <input #inputElement type="text" (keyup.enter)="sendMessage()" placeholder="Escribe tu mensaje..." />
+      <button app-button (click)="sendMessage()">Send</button>
+      <!-- <button app-button (click)="sendBotMessage('Soy un bot xd')">Bot</button> -->
     </app-input>
-    <button (click)="sendMessage()">Send</button>
   </section>
 </app-chat-container>

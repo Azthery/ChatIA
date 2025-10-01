@@ -1,19 +1,71 @@
 :host {
+  display: flex;
+  gap: 0.75rem;
+  border-radius: 5px;
+  width: 80%;
+
+  .chat-bubble {
+    &__sender {
+      font-weight: bold;
+      color: rgb(35, 136, 44);
+      margin-top: 0.25rem;
+      
+    width: 60px;
+    height: 60px;
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-
-    padding: 0.5rem;
-    border: 1px solid #8f8c8c;
-    border-radius: 5px;
-
-    p {
-        margin: 0;
-        font-size: 20px;
+    border-radius: 100%;
     }
+    &__message {
+        &__header {
+            display: flex;
+            // justify-content: end;
+            color: #8f8c8c;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        &__content {
+          margin: 0;
+          padding: 0.75rem;
+          border-radius: 0.75rem;
+          font-size: 0.95rem;
 
-    .chat-bubble__sender {
-        font-weight: bold;
-        color:rgb(35, 136, 44);
+      }
     }
+  }
+}
+
+:host(.chat-bubble--user) {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+
+  .chat-bubble {
+    &__message {
+        &__header {
+            justify-content: end;
+        }
+        &__content {
+            justify-content: end;
+            background-color: #30cc92;
+        }
+    }
+  }
+}
+:host(.chat-bubble--bot) {
+  align-self: flex-start;
+
+  .chat-bubble {
+    &__sender {
+      background: url('../../assets/img/ia-perfil.png');
+      background-position: center;
+        background-size: cover;
+
+    }
+    &__message {
+        &__header {
+        }
+        &__content {
+            background-color: #764dee;
+        }
+    }
+  }
 }
